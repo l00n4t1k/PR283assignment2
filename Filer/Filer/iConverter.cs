@@ -17,6 +17,6 @@ namespace Filer
             get;
         }
         void Compress(string uncompressedLevel);
-        void Expand(string uncompressedLevel);
+        void Expand(string compressedLevel);
     }
 }
