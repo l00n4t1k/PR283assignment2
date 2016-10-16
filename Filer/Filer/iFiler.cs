@@ -8,7 +8,7 @@ namespace Filer
 {
     interface iFiler
     {
-        void Save(string filename, iFileable theFile);
+        void Save(string filename/*, iFileable theFile*/);
         string Load(string filename);
     }
 }

@@ -9,15 +9,15 @@ namespace Filer
     public class Filer : iFiler
     {
 
-        protected iLoader Loader;
-        protected iSaver Saver;
-        protected iConverter Converter;
+        protected iLoader MyLoader;
+        protected iSaver MySaver;
+        protected iConverter MyConverter;
 
         public Filer()
         {
-            Loader = new Loader(this);
-            Saver = new Saver();
-            Converter = new Converter();
+            MyLoader = new Loader(this);
+            MySaver = new Saver(this);
+            MyConverter = new Converter();
         }
 
         private int curLevelIndex;
@@ -64,14 +64,14 @@ namespace Filer
             throw new NotImplementedException();
         }
 
-        public void Save(string filename, iFileable theFile)
+        public void Save(string filename/*, iFileable theFile*/)
         {
             /*steps for saving...
              * 1. take level string and compress
              * 2. open file
              * 3. write compressed level string to file
              * */
-            throw new NotImplementedException();
+            MySaver.Save(filename);
         }
     }
 }

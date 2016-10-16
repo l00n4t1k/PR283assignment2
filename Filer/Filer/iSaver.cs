@@ -8,6 +8,6 @@ namespace Filer
 {
     public interface iSaver
     {
-        void Save(string filename, iFileable callMeBackforDetails);
+        void Save(string filename/*, iFileable callMeBackforDetails*/);
     }
 }

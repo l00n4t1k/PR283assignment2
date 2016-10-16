@@ -28,16 +28,19 @@ namespace Filer
 
         public void Compress(string uncompressedLevel)
         {
-            Compressed = Regex.Replace(uncompressedLevel, @"(.)\1*", delegate (Match m)
+            uncompressedLevel = uncompressedLevel.Trim();
+            uncompressedLevel = Regex.Replace(uncompressedLevel, "\n", delegate (Match c)
             {
-                if (m.Value.Length != 1)
-                {
+                return "|";
+            });
+            Compressed = Regex.Replace(uncompressedLevel, @"(\S)\1*", delegate (Match m)
+            {
+                if (m.Groups[1].Value == "\n")
+                    return "|";
+                else if (m.Value.Length != 1)
                     return string.Concat(m.Value.Length, m.Groups[1].Value);
-                }
-                else
-                {
+                else 
                     return m.Groups[1].Value.ToString();
-                }
             });
             //string res = "";
             //int c = 1;
