@@ -6,19 +6,52 @@ using System.Threading.Tasks;
 
 namespace Filer
 {
-    public class Filer : iFiler, iLoader, iSaver
+    public class Filer : iFiler
     {
 
         protected iLoader Loader;
         protected iSaver Saver;
         protected iConverter Converter;
 
-        public Filer(iLoader theLoader, iSaver theSaver, iConverter theConverter)
+        public Filer()
         {
-            Loader = theLoader;
-            Saver = theSaver;
-            Converter = theConverter;
+            Loader = new Loader(this);
+            Saver = new Saver();
+            Converter = new Converter();
         }
+
+        private int curLevelIndex;
+
+        public int myCurLevelIndex
+        {
+            get { return curLevelIndex; }
+            set { curLevelIndex = value; }
+        }
+
+        private string filepath;
+
+        public string MyFilePath
+        {
+            get { return filepath; }
+            set { filepath = value; }
+        }
+
+        private string[] allLevels;
+
+        public string[] MyLevels
+        {
+            get { return allLevels; }
+            set { allLevels = value; }
+        }
+
+        private bool HasLoaded;
+
+        public bool MyHasLoaded
+        {
+            get { return HasLoaded; }
+            set { HasLoaded = value; }
+        }
+
 
         public string Load(string filename)
         {

@@ -8,6 +8,6 @@ namespace Filer
 {
     public interface iLoader
     {
-        string Load(string fileName);
+        void Load(string fileName);
     }
 }

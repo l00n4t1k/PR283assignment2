@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Filer
 {
@@ -27,70 +28,84 @@ namespace Filer
 
         public void Compress(string uncompressedLevel)
         {
-            string res = "";
-            int c = 1;
-            int i = 0;
-            char[] explode = uncompressedLevel.ToCharArray();
-            do
+            Compressed = Regex.Replace(uncompressedLevel, @"(.)\1*", delegate (Match m)
             {
-                i++;
-                string t = explode[i - 1].ToString();
-                try
+                if (m.Value.Length != 1)
                 {
-                    if (explode[i].ToString() == t)
-                    {
-                        c++;
-                    }
-                    else
-                    {
-                        if ( c != 1)
-                        {
-                            res += t + c;
-                        }
-                        else
-                        {
-                            res += t;
-                        }
-                        c = 1;
-                    }
-                } 
-                catch
-                {
-                    if (c != 1)
-                    {
-                        res += t + c;
-                    }
-                    else
-                    {
-                        res += t;
-                    }
+                    return string.Concat(m.Value.Length, m.Groups[1].Value);
                 }
-                
-            } while (i < explode.Length);
-            Compressed = res;
+                else
+                {
+                    return m.Groups[1].Value.ToString();
+                }
+            });
+            //string res = "";
+            //int c = 1;
+            //int i = 0;
+            //char[] explode = uncompressedLevel.ToCharArray();
+            //do
+            //{
+            //    i++;
+            //    string t = explode[i - 1].ToString();
+            //    try
+            //    {
+            //        if (explode[i].ToString() == t)
+            //        {
+            //            c++;
+            //        }
+            //        else
+            //        {
+            //            if ( c != 1)
+            //            {
+            //                res += t + c;
+            //            }
+            //            else
+            //            {
+            //                res += t;
+            //            }
+            //            c = 1;
+            //        }
+            //    } 
+            //    catch
+            //    {
+            //        if (c != 1)
+            //        {
+            //            res += t + c;
+            //        }
+            //        else
+            //        {
+            //            res += t;
+            //        }
+            //    }
+
+            //} while (i < explode.Length);
+            //Compressed = res;
         }
 
         public void Expand(string compressedLevel)
         {
-            int c = 0;
-            bool x = true;
-            char prev = compressedLevel[0];
-            string res = "";
-            foreach (char i in compressedLevel)
+
+            //string res = "";
+            //string a = "";
+            //int count = 0;
+            ////StringBuilder sb = new StringBuilder();
+            //char current = char.MinValue;
+            //for (int i = 0; i < compressedLevel.Length; i++)
+            //{
+            //    current = compressedLevel[i];
+            //    if (char.IsDigit(current))
+            //        a += current;
+            //    else
+            //    {
+            //        count = int.Parse(a);
+            //        a = "";
+            //        res += new string(current, count);
+            //    }
+            //}
+            Expanded = Regex.Replace(compressedLevel, @"(\d+)(\D)", delegate (Match m)
             {
-                if (Int32.TryParse(i.ToString(), out c))
-                {
-                    res += new string(prev, c);
-                    x = false;
-                }
-                else if (i != prev && !x)
-                {
-                    res += i;
-                    x = true;
-                }
-                prev = i;
-            }
-            Expanded = res;
+                return new string(m.Groups[2].Value[0], int.Parse(m.Groups[1].Value));
+            });
         }
     }
 }
