@@ -62,19 +62,23 @@ namespace SokobanFiler
             return MyLoader;
         }
 
-        public string Load(string filename)
+        public string Load(string filename, int levelNum)
         {
+            filename = MyFilePath + "\\" + filename + ".txt";
+            MyLoader.Load(filename);
+            return MyLevels[levelNum - 1];
             /*steps for loading...
              * 1. open file
              * 2. read file to variable
              * 3. uncompress level
              * 4. return uncompressed level
              * */
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void Save(string filename/*, iFileable theFile*/)
         {
+            filename = MyFilePath + "\\" + filename + ".txt";
             /*steps for saving...
              * 1. take level string and compress
              * 2. open file

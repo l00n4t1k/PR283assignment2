@@ -5,8 +5,24 @@ using SokobanFiler;
 namespace FilerTests
 {
     [TestClass]
-    public class UnitTest1
+    public class CompressorTests
     {
+
+        //[TestMethod]
+        public void RunAllCompressorTests()
+        {
+            TestCompressor01();
+            TestCompressor02();
+            TestExpander01();
+            TestExpander02();
+            SinglesAreNotCompressed();
+            ShortRunCompression();
+            LongRunCompression();
+            RunsAndSinglesCompression();
+            TwoLinesCompressedToOne();
+            RemoveTrailingBlanksWhenCompressing();
+        }
+
         [TestMethod]
         public void TestCompressor01()
         {

@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SokobanFiler;
+using System.IO;
 
 namespace FilerTests
 {
@@ -12,6 +12,14 @@ namespace FilerTests
         static Saver s;
         //protected Filer f;
         //protected Saver s;
+
+        //[TestMethod]
+        public void RunAllSaverTests(TestContext context)
+        {
+            ClassInit(context);
+            CheckCreatesFile();
+            CheckNotCreatesFile();
+        }
 
         [ClassCleanup]
         public static void TestClean()
@@ -27,13 +35,13 @@ namespace FilerTests
             f = new Filer();
             s = f.GetMySaver();
             f.MyLevels = new string[] { "--#####|###---#|#--*#-##|#-#--*-#|#-*--#-#|##-#+--#|-#---$##|-###--#|---####|", "--#####|###---#|#--*#-##|#-#--*-#|#-*--#-#|##-#+--#|-#---$##|-###--#|---####|" };
-            
+
         }
 
         [TestMethod]
         public void CheckCreatesFile()
         {
-            
+
             f.GetMySaver().Save("F:\\TestFiles\\CheckCreatesFile.txt");
             bool res = File.Exists("F:\\TestFiles\\CheckCreatesFile.txt");
 

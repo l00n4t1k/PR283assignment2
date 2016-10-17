@@ -9,6 +9,6 @@ namespace SokobanFiler
     interface iFiler
     {
         void Save(string filename/*, iFileable theFile*/);
-        string Load(string filename);
+        string Load(string filename, int levelNum);
     }
 }
