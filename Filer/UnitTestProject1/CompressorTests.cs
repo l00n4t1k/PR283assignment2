@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Filer;
+using SokobanFiler;
 
 namespace FilerTests
 {
@@ -123,6 +123,7 @@ namespace FilerTests
             string actual = compressor.Compressed;
             // assert
             Assert.AreEqual(expected, actual, "Trailing Blanks at end of line");
-        }
+        }
+
     }
 }

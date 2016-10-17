@@ -6,7 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Filer
+namespace SokobanFiler
 {
     public class Loader : iLoader
     {

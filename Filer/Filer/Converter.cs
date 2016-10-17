@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace Filer
+namespace SokobanFiler
 {
     public class Converter : iConverter
     {
@@ -29,10 +29,7 @@ namespace Filer
         public void Compress(string uncompressedLevel)
         {
             uncompressedLevel = uncompressedLevel.Trim();
-            uncompressedLevel = Regex.Replace(uncompressedLevel, "\n", delegate (Match c)
-            {
-                return "|";
-            });
+            uncompressedLevel = Regex.Replace(uncompressedLevel, "\n", delegate (Match c){return "|";});
             Compressed = Regex.Replace(uncompressedLevel, @"(\S)\1*", delegate (Match m)
             {
                 if (m.Groups[1].Value == "\n")

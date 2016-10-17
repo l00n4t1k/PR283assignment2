@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filer
+namespace SokobanFiler
 {
     public class Filer : iFiler
     {
 
-        protected iLoader MyLoader;
-        protected iSaver MySaver;
-        protected iConverter MyConverter;
+        protected Loader MyLoader;
+        protected Saver MySaver;
+        protected Converter MyConverter;
 
         public Filer()
         {
@@ -52,6 +52,15 @@ namespace Filer
             set { HasLoaded = value; }
         }
 
+        public Saver GetMySaver()
+        {
+            return MySaver;
+        }
+
+        public Loader GetMyLoader()
+        {
+            return MyLoader;
+        }
 
         public string Load(string filename)
         {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Filer
+namespace SokobanFiler
 {
     public class Saver : iSaver
     {
@@ -19,8 +19,11 @@ namespace Filer
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach(string level in MyFiler.MyLevels)
+            foreach (string level in MyFiler.MyLevels)
+            {
                 sb.Append(level);
+                sb.Append("\n");
+            }
 
             using (StreamWriter outfile = new StreamWriter(filename))
             {
