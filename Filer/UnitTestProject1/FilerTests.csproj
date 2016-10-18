@@ -57,6 +57,7 @@
     <Compile Include="SaverTests.cs" />
     <Compile Include="LoaderTests.cs" />
     <Compile Include="TestController.cs" />
+    <Compile Include="FileableTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Filer\Filer.csproj">

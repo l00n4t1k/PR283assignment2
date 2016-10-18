@@ -9,11 +9,13 @@ namespace SokobanFiler
     class Program
     {
 
-        static iFiler TheFiler;
+        static Filer TheFiler;
+        static iFileable TheFileable;
 
         static void Main(string[] args)
         {
             TheFiler = new Filer();
+            TheFileable = new Fileable(TheFiler);
 
             Console.WriteLine(Parts.Wall + " " + (char)Parts.Wall);
             Console.WriteLine(Parts.Goal + " " + (char)Parts.Goal);

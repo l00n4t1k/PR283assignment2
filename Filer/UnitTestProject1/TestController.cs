@@ -6,7 +6,11 @@ namespace FilerTests
     [TestClass]
     public class TestController
     {
-
+        /*
+        ignore this test class. was trying to get all tests in the 
+        other classes running by calling a single method. decided to
+        not waste any more time on it at this stage
+        */
         static LoaderTests l;
         static SaverTests s;
         static CompressorTests c;
@@ -32,25 +36,18 @@ namespace FilerTests
         [TestMethod]
         public void RunAllLoader()
         {
-            
-
             l.RunAllLoaderTests(_testContext);
         }
 
         [TestMethod]
         public void RunAllSaver()
         {
-            
-
             s.RunAllSaverTests(_testContext);
         }
 
         [TestMethod]
         public void RunAllCompressor()
         {
-          
-            
-
             c.RunAllCompressorTests();
         }
     }

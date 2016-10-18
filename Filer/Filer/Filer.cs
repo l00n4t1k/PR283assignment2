@@ -22,7 +22,7 @@ namespace SokobanFiler
 
         private int curLevelIndex;
 
-        public int myCurLevelIndex
+        public int MyCurLevelIndex
         {
             get { return curLevelIndex; }
             set { curLevelIndex = value; }
@@ -64,6 +64,7 @@ namespace SokobanFiler
 
         public string Load(string filename, int levelNum)
         {
+            curLevelIndex = levelNum - 1;
             filename = MyFilePath + "\\" + filename + ".txt";
             MyLoader.Load(filename);
             return MyLevels[levelNum - 1];
@@ -73,7 +74,6 @@ namespace SokobanFiler
              * 3. uncompress level
              * 4. return uncompressed level
              * */
-            //throw new NotImplementedException();
         }
 
         public void Save(string filename/*, iFileable theFile*/)

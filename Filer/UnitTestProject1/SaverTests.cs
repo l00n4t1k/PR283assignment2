@@ -55,5 +55,12 @@ namespace FilerTests
 
             Assert.AreEqual(false, res);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(DirectoryNotFoundException))]
+        public void TestSaveToNonExistantFolder()
+        {
+            f.GetMySaver().Save("F:\\TestFiles2\\CheckCreatesFile.txt");
+        }
     }
 }

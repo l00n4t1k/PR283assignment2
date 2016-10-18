@@ -58,5 +58,12 @@ namespace FilerTests
             CollectionAssert.AreEqual(expected, res);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void TestLoadNonExistantFile()
+        {
+            F.Load("LoaderTestNoFile", 1);
+        }
+
     }
 }
